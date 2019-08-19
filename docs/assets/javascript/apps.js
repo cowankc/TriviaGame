@@ -1,0 +1,92 @@
+$( document ).ready(function() {
+    let correctCount = 0
+    let wrongCount = 0
+    let questionArray = [
+    {
+        question:"What year was Star Wars a New Hope released?",
+        wrong1: "1971",
+        wrong2: "1980",
+        answer: "1977",
+        wrong3: "1975",
+        image: "assets/images/newhope.jpg",
+    },
+    {
+        question: "What is the name of Luke's uncle?",
+        wrong1: "Han",
+        answer: "Owen",
+        wrong2: "Ben",
+        wrong3: "Yoda",
+        image: "assets/images/owen.jpg",
+    },
+    {
+        question: "What is the name of the Planet where Luke finds Yoda",
+        answer: "Dagobah",
+        wrong2: "Tatooine",
+        wrong1: "Hoth",
+        wrong3: "Endor",
+        image: "assets/images/dagobah.jpg",
+    },
+    {
+        question: "What color is Mace Windu's lightsaber",
+        answer: "purple",
+        wrong2: "green",
+        wrong1: "red",
+        wrong3: "blue",
+        image: "assets/images/mace.jpg",
+    },
+    {
+        question: "Where is Chewbacca from?",
+        wrong1: "Hoth",
+        wrong2: "Wookieland",
+        answer: "kashyyyk",
+        wrong3: "Yavin IV",
+        image: "assets/images/kashyyyk.jpg",
+    },
+    {
+        question:"How long does it take too be digested inside the sarlac pit?",
+        wrong1: "20 seconds",
+        wrong2: "4 days",
+        wrong3: "10 years",
+        answer: "1000 years",
+        image: "assets/images/sarlacc.gif"
+    },
+    {
+        question: "Who was in charge of the space battle during the Battle of Endor?",
+        wrong1: "Han solo",
+        answer: "Admiral Ackbar",
+        wrong2: "Mon Mothma",
+        wrong3: "Princess Leia",
+        image: "assets/images/ackbar.gif"
+    },
+    {
+        question: "what is the name of Han's son?",
+        wrong1: "Luke",
+        wrong2: "Lando",
+        answer: "Ben",
+        wrong3: "Chewbacca",
+        image: "assets/images/ben.gif"
+    },
+    {
+        question: "Who is Frozen in Carbonite and given to Jabba the Hut",
+        wrong1: "luke Skywalker",
+        wrong2: "Darth Vader",
+        wrong3: "Princess Leia",
+        answer: "Han Solo",
+        image: "assets/images/frozen.jpg"
+    },
+    {
+        question: "Who is Boba Fetts Father?",
+        answer: "Jango",
+        wrong2: "Greedo",
+        wrong1: "Dex",
+        wrong3: "Snoke",
+        image: "assets/images/boba.gif"
+    },
+]
+
+
+
+console.log(questionArray)
+
+
+});
