@@ -1,13 +1,14 @@
 $( document ).ready(function() {
     let correctCount = 0
     let wrongCount = 0
+    let questionNumber = 0
     let questionArray = [
     {
         question:"What year was Star Wars a New Hope released?",
-        wrong1: "1971",
-        wrong2: "1980",
-        answer: "1977",
-        wrong3: "1975",
+        wrong1: " 1971 " ,
+        wrong2: " 1980 ",
+        answer: " 1977 ",
+        wrong3: " 1975 ",
         image: "assets/images/newhope.jpg",
     },
     {
@@ -60,10 +61,10 @@ $( document ).ready(function() {
     },
     {
         question: "what is the name of Han's son?",
-        wrong1: "Luke",
-        wrong2: "Lando",
-        answer: "Ben",
-        wrong3: "Chewbacca",
+        wrong1: " Luke ",
+        wrong2: " Lando ",
+        answer: " Ben ",
+        wrong3: " Chewbacca ",
         image: "assets/images/ben.gif"
     },
     {
@@ -83,10 +84,40 @@ $( document ).ready(function() {
         image: "assets/images/boba.gif"
     },
 ]
+let answerArray = [questionArray[questionNumber].answer, questionArray[questionNumber].wrong1, questionArray[questionNumber].wrong2, questionArray[questionNumber].wrong3]
 
+function answerShuffle(array) {
+    let currentIndex = array.length, temp, random;
+    // While there remain elements to shuffle...
+    if (0 !== currentIndex) {
+      random = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temp = array[currentIndex];
+      array[currentIndex] = array[random];
+      array[random] = temp;
+    }
+    return array.forEach(element => {
+    $("#answers").append("<div class='options'>" + element + "</div>")
+    });
+  }
 
+let start = function () {
+    $("#start").on("click", function () {
+        $("#start").remove();
+        $("#trivia").append().html(questionArray[questionNumber].question);
+        answerShuffle(answerArray);
+        console.log($(".options"))
 
-console.log(questionArray)
+    });
+}
 
+let choice = function () {
+    $("div.options").on("click", function() {
+        console.log("yes")
+    });
+}
+
+start()
+choice ()
 
 });
