@@ -3,3 +3,7 @@ section {
     background-color:white;
     height: 75vh;
 }
+img {
+    width: 300px;
+    height: auto;
+}

@@ -9,7 +9,7 @@ $( document ).ready(function() {
         wrong2: " 1980 ",
         answer: " 1977 ",
         wrong3: " 1975 ",
-        image: "assets/images/newhope.jpg",
+        image: "<img src='assets/images/newhope.jpg'>",
     },
     {
         question: "What is the name of Luke's uncle?",
@@ -17,7 +17,7 @@ $( document ).ready(function() {
         answer: "Owen",
         wrong2: "Ben",
         wrong3: "Yoda",
-        image: "assets/images/owen.jpg",
+        image: "<img src='assets/images/owen.jpg'>",
     },
     {
         question: "What is the name of the Planet where Luke finds Yoda",
@@ -25,7 +25,7 @@ $( document ).ready(function() {
         wrong2: "Tatooine",
         wrong1: "Hoth",
         wrong3: "Endor",
-        image: "assets/images/dagobah.jpg",
+        image: "<img src='assets/images/dagobah.jpg'>",
     },
     {
         question: "What color is Mace Windu's lightsaber",
@@ -33,7 +33,7 @@ $( document ).ready(function() {
         wrong2: "green",
         wrong1: "red",
         wrong3: "blue",
-        image: "assets/images/mace.jpg",
+        image: "<img src='assets/images/mace.jpg'>",
     },
     {
         question: "Where is Chewbacca from?",
@@ -41,7 +41,7 @@ $( document ).ready(function() {
         wrong2: "Wookieland",
         answer: "kashyyyk",
         wrong3: "Yavin IV",
-        image: "assets/images/kashyyyk.jpg",
+        image: "<img src='assets/images/kashyyyk.jpg'>",
     },
     {
         question:"How long does it take too be digested inside the sarlac pit?",
@@ -49,7 +49,7 @@ $( document ).ready(function() {
         wrong2: "4 days",
         wrong3: "10 years",
         answer: "1000 years",
-        image: "assets/images/sarlacc.gif"
+        image: "<img src='<assets/images/sarlacc.gif'>"
     },
     {
         question: "Who was in charge of the space battle during the Battle of Endor?",
@@ -57,7 +57,7 @@ $( document ).ready(function() {
         answer: "Admiral Ackbar",
         wrong2: "Mon Mothma",
         wrong3: "Princess Leia",
-        image: "assets/images/ackbar.gif"
+        image: "<img src='assets/images/ackbar.gif'>"
     },
     {
         question: "what is the name of Han's son?",
@@ -65,7 +65,7 @@ $( document ).ready(function() {
         wrong2: " Lando ",
         answer: " Ben ",
         wrong3: " Chewbacca ",
-        image: "assets/images/ben.gif"
+        image: "<img src='assets/images/ben.gif'>"
     },
     {
         question: "Who is Frozen in Carbonite and given to Jabba the Hut",
@@ -73,7 +73,7 @@ $( document ).ready(function() {
         wrong2: "Darth Vader",
         wrong3: "Princess Leia",
         answer: "Han Solo",
-        image: "assets/images/frozen.jpg"
+        image: "<img src='assets/images/frozen.jpg'>"
     },
     {
         question: "Who is Boba Fetts Father?",
@@ -81,7 +81,7 @@ $( document ).ready(function() {
         wrong2: "Greedo",
         wrong1: "Dex",
         wrong3: "Snoke",
-        image: "assets/images/boba.gif"
+        image: "<img src='assets/images/boba.gif'>"
     },
 ]
 let answerArray = [questionArray[questionNumber].answer, questionArray[questionNumber].wrong1, questionArray[questionNumber].wrong2, questionArray[questionNumber].wrong3]
@@ -101,23 +101,36 @@ function answerShuffle(array) {
     });
   }
 
+let choice = function () {
+    $("div.options").on("click", function() {
+        if ($("div.options").text(questionArray[questionNumber].answer).on("click")) {
+        console.log("yes");
+        $("#answers").empty();
+        $("#trivia").empty();
+        $("#pics").prepend(questionArray[questionNumber].image);
+        }
+        else if (!$("div.options").text(questionArray[questionNumber].answer).on("click")){
+        console.log("no")
+        $("#answers").empty();
+        $("#trivia").empty();
+        $("#pics").prepend("<img src='assets/images/wrong.gif'>");
+        }
+    });
+}
+
 let start = function () {
     $("#start").on("click", function () {
         $("#start").remove();
         $("#trivia").append().html(questionArray[questionNumber].question);
         answerShuffle(answerArray);
         console.log($(".options"))
-
+        choice ()
     });
 }
 
-let choice = function () {
-    $("div.options").on("click", function() {
-        console.log("yes")
-    });
-}
+
 
 start()
-choice ()
+
 
 });
