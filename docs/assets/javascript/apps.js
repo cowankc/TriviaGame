@@ -1,5 +1,8 @@
 $( document ).ready(function() {
-    let time = 5;
+
+    // variables and arrays 
+
+    let time = 15;
     let correctCount = 0;
     let wrongCount = 0;
     let questionNumber = 0;
@@ -26,7 +29,7 @@ $( document ).ready(function() {
         wrong2: "Tatooine",
         wrong1: "Hoth",
         wrong3: "Endor",
-        image: "<img src='assets/images/dagobah.jpg'>",
+        image: "<img src='assets/images/dagobah.jpeg'>",
     },
     {
         question: "What color is Mace Windu's lightsaber",
@@ -85,25 +88,37 @@ $( document ).ready(function() {
         image: "<img src='assets/images/boba.gif'>"
     },
 ]
-let answerArray = [questionArray[questionNumber].answer, questionArray[questionNumber].wrong1, questionArray[questionNumber].wrong2, questionArray[questionNumber].wrong3]
-let correct = questionArray[questionNumber].answer
-let incorrect = [questionArray[questionNumber].wrong1, questionArray[questionNumber].wrong2, questionArray[questionNumber].wrong3]
-function answerShuffle(array) {
-    let currentIndex = array.length, temp, random;
+
+
+let start = function () {
+    $("#start").on("click", function () {
+        $("#start").remove();
+        $("#trivia").append().html(questionArray[questionNumber].question);
+        answerShuffle();
+        timeDisplay();
+        Timeout();
+        choice ();
+    });
+}
+
+ let answerShuffle = function() {
+    let answerArray = [questionArray[questionNumber].answer, questionArray[questionNumber].wrong1, questionArray[questionNumber].wrong2, questionArray[questionNumber].wrong3]
+    let currentIndex = answerArray.length, temp, random;
     // While there remain elements to shuffle...
     if (0 !== currentIndex) {
       random = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-      temp = array[currentIndex];
-      array[currentIndex] = array[random];
-      array[random] = temp;
+      temp = answerArray[currentIndex];
+      answerArray[currentIndex] = answerArray[random];
+      answerArray[random] = temp;
     }
-    return array.forEach(element => {
+    return answerArray.forEach(element => {
     $("#answers").append("<div class='options'>" + element + "</div>")
     });
   }
 
 let choice = function () {
+    let correct = questionArray[questionNumber].answer;
     $("div.options:contains('"+correct+"')").on("click", function() {
         clearInterval(intervalId);
         clearTimeout(timeoutId);
@@ -113,6 +128,8 @@ let choice = function () {
         $("#pics").prepend(questionArray[questionNumber].image);
         correctCount++;
         console.log(correctCount);
+        questionNumber++
+        timeTillQuestion ()
     });
     $("div.options:not(:contains('"+correct+"'))").on("click", function() {
         clearInterval(intervalId);
@@ -123,26 +140,19 @@ let choice = function () {
         $("#pics").prepend("<img src='assets/images/wrong.gif'>");
         wrongCount++;
         console.log(wrongCount);
+        questionNumber++
+        timeTillQuestion ()
     });
     
 }
 
-let start = function () {
-    $("#start").on("click", function () {
-        $("#start").remove();
-        $("#trivia").append().html(questionArray[questionNumber].question);
-        answerShuffle(answerArray);
-        timeDisplay();
-        Timeout();
-        choice ();
-        console.log(questionNumber);
-    });
-}
+// variables and functions for question timer 
+
 let intervalId; 
 let timeoutId;
 
 let Timeout = function () {
-    timeoutId = setTimeout(outOfTime, 5000)
+    timeoutId = setTimeout(outOfTime, 15000)
 }
 let outOfTime = function (){
         console.log("yes")
@@ -152,8 +162,9 @@ let outOfTime = function (){
         $("#trivia").append("OUT OF TIME")
         $("#pics").prepend("<img src='assets/images/wrong.gif'>");
         wrongCount++;
+        questionNumber++
+        timeTillQuestion ()
 }
-
 
 let timeDisplay = function () {
     intervalId = setInterval(countDown, 1000);
@@ -164,7 +175,22 @@ let countDown = function () {
     $("#timer").text(time)
 }
 
+let timeTillQuestion = function () {
+    setTimeout(nextQuestion, 4000)
+}
 
+let nextQuestion = function() {
+    $("#trivia").empty();
+    $("#pics").empty();
+    $("#timer").empty();
+    $("#trivia").append().html(questionArray[questionNumber].question);
+    answerShuffle();
+    timeDisplay();
+    Timeout();
+    choice ();
+    console.log(questionNumber);
+
+}
 
 start()
 
