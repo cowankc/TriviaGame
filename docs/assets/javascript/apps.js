@@ -176,10 +176,11 @@ let countDown = function () {
 }
 
 let timeTillQuestion = function () {
-    setTimeout(nextQuestion, 4000)
+    setTimeout(nextQuestion, 3000)
 }
 
 let nextQuestion = function() {
+    time = 15;
     $("#trivia").empty();
     $("#pics").empty();
     $("#timer").empty();
