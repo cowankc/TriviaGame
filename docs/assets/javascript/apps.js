@@ -1,7 +1,8 @@
 $( document ).ready(function() {
-    let correctCount = 0
-    let wrongCount = 0
-    let questionNumber = 0
+    let time = 5;
+    let correctCount = 0;
+    let wrongCount = 0;
+    let questionNumber = 0;
     let questionArray = [
     {
         question:"What year was Star Wars a New Hope released?",
@@ -104,19 +105,26 @@ function answerShuffle(array) {
 
 let choice = function () {
     $("div.options:contains('"+correct+"')").on("click", function() {
+        clearInterval(intervalId);
+        clearTimeout(timeoutId);
         $("#answers").empty();
         $("#trivia").empty();
+        $("#trivia").append("Correct!");
         $("#pics").prepend(questionArray[questionNumber].image);
         correctCount++;
         console.log(correctCount);
     });
     $("div.options:not(:contains('"+correct+"'))").on("click", function() {
+        clearInterval(intervalId);
+        clearTimeout(timeoutId);
         $("#answers").empty();
         $("#trivia").empty();
+        $("#trivia").append("Wrong!")
         $("#pics").prepend("<img src='assets/images/wrong.gif'>");
         wrongCount++;
         console.log(wrongCount);
     });
+    
 }
 
 let start = function () {
@@ -124,10 +132,36 @@ let start = function () {
         $("#start").remove();
         $("#trivia").append().html(questionArray[questionNumber].question);
         answerShuffle(answerArray);
+        timeDisplay();
+        Timeout();
         choice ();
-        questionNumber++;
         console.log(questionNumber);
     });
+}
+let intervalId; 
+let timeoutId;
+
+let Timeout = function () {
+    timeoutId = setTimeout(outOfTime, 5000)
+}
+let outOfTime = function (){
+        console.log("yes")
+        clearInterval(intervalId)
+        $("#answers").empty();
+        $("#trivia").empty();
+        $("#trivia").append("OUT OF TIME")
+        $("#pics").prepend("<img src='assets/images/wrong.gif'>");
+        wrongCount++;
+}
+
+
+let timeDisplay = function () {
+    intervalId = setInterval(countDown, 1000);
+}
+
+let countDown = function () {
+    time--
+    $("#timer").text(time)
 }
 
 
