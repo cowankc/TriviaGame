@@ -85,7 +85,8 @@ $( document ).ready(function() {
     },
 ]
 let answerArray = [questionArray[questionNumber].answer, questionArray[questionNumber].wrong1, questionArray[questionNumber].wrong2, questionArray[questionNumber].wrong3]
-
+let correct = questionArray[questionNumber].answer
+let incorrect = [questionArray[questionNumber].wrong1, questionArray[questionNumber].wrong2, questionArray[questionNumber].wrong3]
 function answerShuffle(array) {
     let currentIndex = array.length, temp, random;
     // While there remain elements to shuffle...
@@ -102,19 +103,19 @@ function answerShuffle(array) {
   }
 
 let choice = function () {
-    $("div.options").on("click", function() {
-        if ($("div.options").text(questionArray[questionNumber].answer).on("click")) {
-        console.log("yes");
+    $("div.options:contains('"+correct+"')").on("click", function() {
         $("#answers").empty();
         $("#trivia").empty();
         $("#pics").prepend(questionArray[questionNumber].image);
-        }
-        else if (!$("div.options").text(questionArray[questionNumber].answer).on("click")){
-        console.log("no")
+        correctCount++;
+        console.log(correctCount);
+    });
+    $("div.options:not(:contains('"+correct+"'))").on("click", function() {
         $("#answers").empty();
         $("#trivia").empty();
         $("#pics").prepend("<img src='assets/images/wrong.gif'>");
-        }
+        wrongCount++;
+        console.log(wrongCount);
     });
 }
 
@@ -123,8 +124,9 @@ let start = function () {
         $("#start").remove();
         $("#trivia").append().html(questionArray[questionNumber].question);
         answerShuffle(answerArray);
-        console.log($(".options"))
-        choice ()
+        choice ();
+        questionNumber++;
+        console.log(questionNumber);
     });
 }
 
