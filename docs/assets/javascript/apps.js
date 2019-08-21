@@ -53,7 +53,7 @@ $( document ).ready(function() {
         wrong2: "4 days",
         wrong3: "10 years",
         answer: "1000 years",
-        image: "<img src='<assets/images/sarlacc.gif'>"
+        image: "<img src='assets/images/sarlacc.gif'>"
     },
     {
         question: "Who was in charge of the space battle during the Battle of Endor?",
@@ -104,7 +104,6 @@ let start = function () {
  let answerShuffle = function() {
     let answerArray = [questionArray[questionNumber].answer, questionArray[questionNumber].wrong1, questionArray[questionNumber].wrong2, questionArray[questionNumber].wrong3]
     let currentIndex = answerArray.length, temp, random;
-    // While there remain elements to shuffle...
     if (0 !== currentIndex) {
       random = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
@@ -129,7 +128,7 @@ let choice = function () {
         correctCount++;
         console.log(correctCount);
         questionNumber++
-        timeTillQuestion ()
+        timeTillQuestion ();
     });
     $("div.options:not(:contains('"+correct+"'))").on("click", function() {
         clearInterval(intervalId);
@@ -180,6 +179,7 @@ let timeTillQuestion = function () {
 }
 
 let nextQuestion = function() {
+    if (questionNumber <= 9) {
     time = 15;
     $("#trivia").empty();
     $("#pics").empty();
@@ -190,6 +190,15 @@ let nextQuestion = function() {
     Timeout();
     choice ();
     console.log(questionNumber);
+    }
+    else {
+        $("#trivia").empty();
+        $("#pics").empty();
+        $("#timer").empty();
+        $("#trivia").append("game over");
+        $("#pics").append("Correct Answers: " + correctCount);
+        $("#answers").append("Wrong Answers: " + wrongCount);
+    }
 
 }
 
