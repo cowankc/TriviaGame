@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 
-    // variables and arrays 
+    // variables and arrays //
 
     let time = 11;
     let correctCount = 0;
@@ -87,8 +87,49 @@ $( document ).ready(function() {
         wrong3: "Snoke",
         image: "<img src='assets/images/boba.gif'>"
     },
+    {
+        question: "What planet was the jedi temple located on?",
+        answer: "Coruscant",
+        wrong2: "Hoth",
+        wrong1: "Jakku",
+        wrong3: "Naboo",
+        image: "<img src='assets/images/temple.gif'>"
+    },
+    {
+        question: "Who co-piloted the Millennium Falcon on the attack of the second Death Star?",
+        wrong1: "Kit Fisto",
+        wrong2: "Sifo Dyas",
+        wrong3: "Chewbacca",
+        answer: "Nien Nunb",
+        image: "<img src='assets/images/nien.gif'>"
+    },
+    {
+        question: "Who killed General Grevious?",
+        wrong1: "Commander Cody",
+        wrong2: "Darth Vader",
+        answer: "General Kenobi",
+        wrong3: "Master Yoda",
+        image: "<img src='assets/images/hello.gif'>"
+    },
+    {
+        question: "what type of droid is used to supplly power to various electronic devices?",
+        wrong1: "R2",
+        wrong2: "BX-series",
+        answer: "Gonk",
+        wrong3: "IT-O",
+        image: "<img src='assets/images/gonk.gif'>"
+    },
+    {
+        question: "Darth Plagueis the wise was so powerful he could manipulate the midichlorians to ",
+        wrong1: "teleport anywhere",
+        answer: "create life",
+        wrong2: "control minds",
+        wrong3: "see into the future",
+        image: "<img src='assets/images/ironic.gif'>",
+    },
 ]
 
+//main game loop//
 
 let start = function () {
     $("#start").on("click", function () {
@@ -102,16 +143,11 @@ let start = function () {
     });
 }
 
+//functions for shuffling anf choosing answers
+
  let answerShuffle = function() {
     let answerArray = [questionArray[questionNumber].answer, questionArray[questionNumber].wrong1, questionArray[questionNumber].wrong2, questionArray[questionNumber].wrong3]
-    let currentIndex = answerArray.length, temp, random;
-    if (0 !== currentIndex) {
-      random = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-      temp = answerArray[currentIndex];
-      answerArray[currentIndex] = answerArray[random];
-      answerArray[random] = temp;
-    }
+    answerArray.sort(function(a,b){return 0.5 - Math.random()});
     return answerArray.forEach(element => {
     $("#answers").append("<div class='options'>" + element + "</div>")
     });
@@ -179,9 +215,11 @@ let timeTillQuestion = function () {
     setTimeout(nextQuestion, 3000)
 }
 
+//function to bring next question and start game over//
+
 let nextQuestion = function() {
-    if (questionNumber <= 9) {
-    time = 15;
+    if (questionNumber <= 14) {
+    time = 11;
     $("#trivia").empty();
     $("#pics").empty();
     $("#timer").empty();
@@ -202,7 +240,7 @@ let nextQuestion = function() {
         let retry= $('<input type="button" value="retry" id="retry" class="offset-lg-5 col-lg-2 btn btn-success"/>');
         $("#buttons").append(retry);
         $("#retry").on("click", function() {
-            time = 15;
+            time = 11;
             correctCount = 0;
             wrongCount = 0;
             questionNumber = 0;
