@@ -172,7 +172,7 @@ let choice = function () {
         clearTimeout(timeoutId);
         $("#answers").empty();
         $("#trivia").empty();
-        $("#trivia").append("Wrong!")
+        $("#trivia").append("Wrong! Correct Answer was, " + correct)
         $("#pics").prepend("<img src='assets/images/wrong.gif'>");
         wrongCount++;
         console.log(wrongCount);
@@ -195,7 +195,7 @@ let outOfTime = function (){
         clearInterval(intervalId)
         $("#answers").empty();
         $("#trivia").empty();
-        $("#trivia").append("OUT OF TIME")
+        $("#trivia").append("OUT OF TIME! Correct Answer was, " + questionArray[questionNumber].answer)
         $("#pics").prepend("<img src='assets/images/wrong.gif'>");
         wrongCount++;
         questionNumber++
