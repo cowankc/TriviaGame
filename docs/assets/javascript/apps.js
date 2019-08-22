@@ -23,70 +23,70 @@ $( document ).ready(function() {
         wrong3: "Yoda",
         image: "<img src='assets/images/owen.jpg'>",
     },
-    {
-        question: "What is the name of the Planet where Luke finds Yoda",
-        answer: "Dagobah",
-        wrong2: "Tatooine",
-        wrong1: "Hoth",
-        wrong3: "Endor",
-        image: "<img src='assets/images/dagobah.jpeg'>",
-    },
-    {
-        question: "What color is Mace Windu's lightsaber",
-        answer: "purple",
-        wrong2: "green",
-        wrong1: "red",
-        wrong3: "blue",
-        image: "<img src='assets/images/mace.jpg'>",
-    },
-    {
-        question: "Where is Chewbacca from?",
-        wrong1: "Hoth",
-        wrong2: "Wookieland",
-        answer: "kashyyyk",
-        wrong3: "Yavin IV",
-        image: "<img src='assets/images/kashyyyk.jpg'>",
-    },
-    {
-        question:"How long does it take too be digested inside the sarlac pit?",
-        wrong1: "20 seconds",
-        wrong2: "4 days",
-        wrong3: "10 years",
-        answer: "1000 years",
-        image: "<img src='assets/images/sarlacc.gif'>"
-    },
-    {
-        question: "Who was in charge of the space battle during the Battle of Endor?",
-        wrong1: "Han solo",
-        answer: "Admiral Ackbar",
-        wrong2: "Mon Mothma",
-        wrong3: "Princess Leia",
-        image: "<img src='assets/images/ackbar.gif'>"
-    },
-    {
-        question: "what is the name of Han's son?",
-        wrong1: " Luke ",
-        wrong2: " Lando ",
-        answer: " Ben ",
-        wrong3: " Chewbacca ",
-        image: "<img src='assets/images/ben.gif'>"
-    },
-    {
-        question: "Who is Frozen in Carbonite and given to Jabba the Hut",
-        wrong1: "luke Skywalker",
-        wrong2: "Darth Vader",
-        wrong3: "Princess Leia",
-        answer: "Han Solo",
-        image: "<img src='assets/images/frozen.jpg'>"
-    },
-    {
-        question: "Who is Boba Fetts Father?",
-        answer: "Jango",
-        wrong2: "Greedo",
-        wrong1: "Dex",
-        wrong3: "Snoke",
-        image: "<img src='assets/images/boba.gif'>"
-    },
+    // {
+    //     question: "What is the name of the Planet where Luke finds Yoda",
+    //     answer: "Dagobah",
+    //     wrong2: "Tatooine",
+    //     wrong1: "Hoth",
+    //     wrong3: "Endor",
+    //     image: "<img src='assets/images/dagobah.jpeg'>",
+    // },
+    // {
+    //     question: "What color is Mace Windu's lightsaber",
+    //     answer: "purple",
+    //     wrong2: "green",
+    //     wrong1: "red",
+    //     wrong3: "blue",
+    //     image: "<img src='assets/images/mace.jpg'>",
+    // },
+    // {
+    //     question: "Where is Chewbacca from?",
+    //     wrong1: "Hoth",
+    //     wrong2: "Wookieland",
+    //     answer: "kashyyyk",
+    //     wrong3: "Yavin IV",
+    //     image: "<img src='assets/images/kashyyyk.jpg'>",
+    // },
+    // {
+    //     question:"How long does it take too be digested inside the sarlac pit?",
+    //     wrong1: "20 seconds",
+    //     wrong2: "4 days",
+    //     wrong3: "10 years",
+    //     answer: "1000 years",
+    //     image: "<img src='assets/images/sarlacc.gif'>"
+    // },
+    // {
+    //     question: "Who was in charge of the space battle during the Battle of Endor?",
+    //     wrong1: "Han solo",
+    //     answer: "Admiral Ackbar",
+    //     wrong2: "Mon Mothma",
+    //     wrong3: "Princess Leia",
+    //     image: "<img src='assets/images/ackbar.gif'>"
+    // },
+    // {
+    //     question: "what is the name of Han's son?",
+    //     wrong1: " Luke ",
+    //     wrong2: " Lando ",
+    //     answer: " Ben ",
+    //     wrong3: " Chewbacca ",
+    //     image: "<img src='assets/images/ben.gif'>"
+    // },
+    // {
+    //     question: "Who is Frozen in Carbonite and given to Jabba the Hut",
+    //     wrong1: "luke Skywalker",
+    //     wrong2: "Darth Vader",
+    //     wrong3: "Princess Leia",
+    //     answer: "Han Solo",
+    //     image: "<img src='assets/images/frozen.jpg'>"
+    // },
+    // {
+    //     question: "Who is Boba Fetts Father?",
+    //     answer: "Jango",
+    //     wrong2: "Greedo",
+    //     wrong1: "Dex",
+    //     wrong3: "Snoke",
+    //     image: "<img src='assets/images/boba.gif'>"
+    // },
 ]
 
 
@@ -179,7 +179,7 @@ let timeTillQuestion = function () {
 }
 
 let nextQuestion = function() {
-    if (questionNumber <= 9) {
+    if (questionNumber <= 1) {
     time = 15;
     $("#trivia").empty();
     $("#pics").empty();
@@ -198,8 +198,25 @@ let nextQuestion = function() {
         $("#trivia").append("game over");
         $("#pics").append("Correct Answers: " + correctCount);
         $("#answers").append("Wrong Answers: " + wrongCount);
+        let retry= $('<input type="button" value="retry" id="retry"/>');
+        $("#buttons").append(retry);
+        $("#retry").on("click", function() {
+            time = 15;
+            correctCount = 0;
+            wrongCount = 0;
+            questionNumber = 0;
+            $("#retry").remove();
+            $("#trivia").empty();
+            $("#pics").empty();
+            $("#timer").empty();
+            $("#answers").empty();
+            $("#trivia").append().html(questionArray[questionNumber].question);
+            answerShuffle();
+            timeDisplay();
+            Timeout();
+            choice ();
+        });
     }
-
 }
 
 start()
