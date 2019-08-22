@@ -14,22 +14,22 @@
 <body background="assets/images/space.jpg">
     <section class="offset-lg-2 col-lg-8 text-center mt-5">
         <div class="row">
-            <h1 class="col-lg-12 mt-5 font-weight-bold text-warning">STAR WARS TRIVIA</h1>
+            <h1 class="col-lg-12 mt-5 font-weight-bold text-warning" id="title">STAR WARS TRIVIA</h1>
         </div>
         <div class="row">
-            <div class="col-lg-12 text-center" id="trivia"></div>
+            <div class="col-lg-12 text-center text-warning" id="trivia"></div>
         </div>
         <div class="row">
-            <div class="offset-lg-5 col-lg-2 offset-lg-5 text-center" id="answers"></div> 
-        </div>
-        <div id="buttons">
-        <button id="start" class= >START</button> 
+            <div class="offset-lg-4 col-lg-4 offset-lg-4 text-center" id="answers"></div> 
         </div>
         <div>
-            <div id ="pics"></div>
+            <div id="pics"><img src="assets/images/title.gif"></div>
         </div>
         <div>
-            <h2 id="timer"></h2>
+            <h2 class="text-danger" id="timer"></h2>
+        </div>
+        <div id="buttons" class="row">
+            <button class="offset-lg-5 col-lg-2 btn btn-success" id="start" class= >START</button> 
         </div>
     </section>
 </body>

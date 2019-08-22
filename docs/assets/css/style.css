@@ -7,3 +7,28 @@ img {
     width: 300px;
     height: auto;
 }
+#trivia {
+    font-size: 34px
+}
+#title {
+    font-size: 50px;
+    text-decoration: underline;
+
+}
+#answers {
+    font-size: 26px;
+}
+.options:hover {
+    color: green;
+    font-size: 30px;
+    font-weight: bold
+}
+#pics {
+    font-size: 26px;
+}
+#start {
+    font-size: 24px
+}
+#retry {
+    font-size: 24px
+}

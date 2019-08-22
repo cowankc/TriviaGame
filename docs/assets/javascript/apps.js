@@ -2,7 +2,7 @@ $( document ).ready(function() {
 
     // variables and arrays 
 
-    let time = 15;
+    let time = 11;
     let correctCount = 0;
     let wrongCount = 0;
     let questionNumber = 0;
@@ -13,7 +13,7 @@ $( document ).ready(function() {
         wrong2: " 1980 ",
         answer: " 1977 ",
         wrong3: " 1975 ",
-        image: "<img src='assets/images/newhope.jpg'>",
+        image: "<img src='assets/images/starwars.gif'>",
     },
     {
         question: "What is the name of Luke's uncle?",
@@ -21,78 +21,79 @@ $( document ).ready(function() {
         answer: "Owen",
         wrong2: "Ben",
         wrong3: "Yoda",
-        image: "<img src='assets/images/owen.jpg'>",
+        image: "<img src='assets/images/owen.gif'>",
     },
-    // {
-    //     question: "What is the name of the Planet where Luke finds Yoda",
-    //     answer: "Dagobah",
-    //     wrong2: "Tatooine",
-    //     wrong1: "Hoth",
-    //     wrong3: "Endor",
-    //     image: "<img src='assets/images/dagobah.jpeg'>",
-    // },
-    // {
-    //     question: "What color is Mace Windu's lightsaber",
-    //     answer: "purple",
-    //     wrong2: "green",
-    //     wrong1: "red",
-    //     wrong3: "blue",
-    //     image: "<img src='assets/images/mace.jpg'>",
-    // },
-    // {
-    //     question: "Where is Chewbacca from?",
-    //     wrong1: "Hoth",
-    //     wrong2: "Wookieland",
-    //     answer: "kashyyyk",
-    //     wrong3: "Yavin IV",
-    //     image: "<img src='assets/images/kashyyyk.jpg'>",
-    // },
-    // {
-    //     question:"How long does it take too be digested inside the sarlac pit?",
-    //     wrong1: "20 seconds",
-    //     wrong2: "4 days",
-    //     wrong3: "10 years",
-    //     answer: "1000 years",
-    //     image: "<img src='assets/images/sarlacc.gif'>"
-    // },
-    // {
-    //     question: "Who was in charge of the space battle during the Battle of Endor?",
-    //     wrong1: "Han solo",
-    //     answer: "Admiral Ackbar",
-    //     wrong2: "Mon Mothma",
-    //     wrong3: "Princess Leia",
-    //     image: "<img src='assets/images/ackbar.gif'>"
-    // },
-    // {
-    //     question: "what is the name of Han's son?",
-    //     wrong1: " Luke ",
-    //     wrong2: " Lando ",
-    //     answer: " Ben ",
-    //     wrong3: " Chewbacca ",
-    //     image: "<img src='assets/images/ben.gif'>"
-    // },
-    // {
-    //     question: "Who is Frozen in Carbonite and given to Jabba the Hut",
-    //     wrong1: "luke Skywalker",
-    //     wrong2: "Darth Vader",
-    //     wrong3: "Princess Leia",
-    //     answer: "Han Solo",
-    //     image: "<img src='assets/images/frozen.jpg'>"
-    // },
-    // {
-    //     question: "Who is Boba Fetts Father?",
-    //     answer: "Jango",
-    //     wrong2: "Greedo",
-    //     wrong1: "Dex",
-    //     wrong3: "Snoke",
-    //     image: "<img src='assets/images/boba.gif'>"
-    // },
+    {
+        question: "What is the name of the Planet where Luke finds Yoda",
+        answer: "Dagobah",
+        wrong2: "Tatooine",
+        wrong1: "Hoth",
+        wrong3: "Endor",
+        image: "<img src='assets/images/dagobah.gif'>",
+    },
+    {
+        question: "What color is Mace Windu's lightsaber",
+        answer: "purple",
+        wrong2: "green",
+        wrong1: "red",
+        wrong3: "blue",
+        image: "<img src='assets/images/windu.gif'>",
+    },
+    {
+        question: "Where is Chewbacca from?",
+        wrong1: "Hoth",
+        wrong2: "Wookieland",
+        answer: "kashyyyk",
+        wrong3: "Yavin IV",
+        image: "<img src='assets/images/kashyyyk.gif'>",
+    },
+    {
+        question:"How long does it take too be digested inside the sarlac pit?",
+        wrong1: "20 seconds",
+        wrong2: "4 days",
+        wrong3: "10 years",
+        answer: "1000 years",
+        image: "<img src='assets/images/sarlacc.gif'>"
+    },
+    {
+        question: "Who was in charge of the space battle during the Battle of Endor?",
+        wrong1: "Han solo",
+        answer: "Admiral Ackbar",
+        wrong2: "Mon Mothma",
+        wrong3: "Princess Leia",
+        image: "<img src='assets/images/ackbar.gif'>"
+    },
+    {
+        question: "what is the name of Han's son?",
+        wrong1: " Luke ",
+        wrong2: " Lando ",
+        answer: " Ben ",
+        wrong3: " Chewbacca ",
+        image: "<img src='assets/images/ben.gif'>"
+    },
+    {
+        question: "Who is Frozen in Carbonite and given to Jabba the Hut",
+        wrong1: "luke Skywalker",
+        wrong2: "Darth Vader",
+        wrong3: "Princess Leia",
+        answer: "Han Solo",
+        image: "<img src='assets/images/frozen.jpg'>"
+    },
+    {
+        question: "Who is Boba Fetts Father?",
+        answer: "Jango",
+        wrong2: "Greedo",
+        wrong1: "Dex",
+        wrong3: "Snoke",
+        image: "<img src='assets/images/boba.gif'>"
+    },
 ]
 
 
 let start = function () {
     $("#start").on("click", function () {
         $("#start").remove();
+        $("#pics").empty();
         $("#trivia").append().html(questionArray[questionNumber].question);
         answerShuffle();
         timeDisplay();
@@ -151,7 +152,7 @@ let intervalId;
 let timeoutId;
 
 let Timeout = function () {
-    timeoutId = setTimeout(outOfTime, 15000)
+    timeoutId = setTimeout(outOfTime, 11000)
 }
 let outOfTime = function (){
         console.log("yes")
@@ -179,7 +180,7 @@ let timeTillQuestion = function () {
 }
 
 let nextQuestion = function() {
-    if (questionNumber <= 1) {
+    if (questionNumber <= 9) {
     time = 15;
     $("#trivia").empty();
     $("#pics").empty();
@@ -195,10 +196,10 @@ let nextQuestion = function() {
         $("#trivia").empty();
         $("#pics").empty();
         $("#timer").empty();
-        $("#trivia").append("game over");
-        $("#pics").append("Correct Answers: " + correctCount);
-        $("#answers").append("Wrong Answers: " + wrongCount);
-        let retry= $('<input type="button" value="retry" id="retry"/>');
+        $("#trivia").append("GAME OVER");
+        $("#answers").append("Correct Answers: " + correctCount);
+        $("#pics").append("Wrong Answers: " + wrongCount);
+        let retry= $('<input type="button" value="retry" id="retry" class="offset-lg-5 col-lg-2 btn btn-success"/>');
         $("#buttons").append(retry);
         $("#retry").on("click", function() {
             time = 15;
